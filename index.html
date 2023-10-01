@@ -2,27 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DOM</title>
+    <title>Task One</title>
     <link rel="stylesheet" href="asets/css/bootstrap.css">
+
 </head>
 <body>
-<section class="container mt-5">
-    <h1 id="h1ID">What is BOM & What is DOM</h1>
-    <h1 class="h1Class">What is BOM & What is DOM</h1>
-    <h2 class="h1">What really JS DO?</h2>
-    <h2>What really JS DO?</h2>
-    <hr>
-    <input class="form-control" type="text" name="cusName">
-    <button class="btn btn-danger mt-3">Test</button>
+<section class="container mt-3">
+    <section class="row">
+        <!--Case One-->
+        <div class="col">
+            <h1>Hello There How are you.?</h1>
+            <input id="txt" class="form-control" type="text" placeholder="Input Something">
+            <button id="btn1" class="mt-2 btn btn-danger">Change Text</button>
+        </div>
+
+        <!--Case Two-->
+        <div class="col">
+            <h1>Input an Image Url</h1>
+            <input id="url" class="form-control" type="url" placeholder="Input Image URL">
+            <div id="img" style="height: 50vh" class="mt-2 border shadow"></div>
+            <button id="btn2" class="mt-2 btn btn-danger">Change Image</button>
+        </div>
+    </section>
 </section>
 
-
 <script>
+    //Case One
+    //Bind an event for Change Text Btn
+    //Get Input Text Value
+    //Assign it to H1 text
+    //Change the color of h1 to red
+    //Change font size t0 4em
 
 
-    document.querySelector("button").addEventListener("click", function (){
-        document.querySelector("#h1ID").innerText = document.querySelector("input").value;
-    });
+    //Case Two
+    //Bind an event for Change Image Btn
+    //Get Input URL Value
+    //Assign it to the Image src
 
 
 </script>
