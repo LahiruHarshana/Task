@@ -11,7 +11,7 @@
     <section class="row">
         <!--Case One-->
         <div class="col">
-            <h1>Hello There How are you.?</h1>
+            <h1 id="h111">Hello There How are you.?</h1>
             <input id="txt" class="form-control" type="text" placeholder="Input Something">
             <button id="btn1" class="mt-2 btn btn-danger">Change Text</button>
         </div>
@@ -40,6 +40,15 @@
     //Get Input URL Value
     //Assign it to the Image src
 
+
+    document.querySelector("#txt").addEventListener("keydown",function (){
+        document.querySelector("#h111").innerText = document.querySelector("#txt").value;
+    })
+
+
+    document.querySelector("#btn1").addEventListener("click",function (){
+        document.querySelector("#h111").style.color='red';
+    })
 
 </script>
 </body>
