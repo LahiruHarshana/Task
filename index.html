@@ -2,114 +2,374 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>DOM Manipulation with JQuery</title>
-    <style>
-        #con{
-            width: 200px;
-            height: 200px;
-        }
-    </style>
+    <title>Customer</title>
+    <script src="asets/js/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="asets/css/bootstrap.css">
+    <script src="asets/js/bootstrap.js"></script>
 </head>
-<body>
+<header>
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" id="customerNav" style="cursor: pointer">Customer</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="itemNav" style="cursor: pointer">Items</a>
+        </li>
+        <li class="nav-item">
+            <a id="orderNav" class="nav-link" style="cursor: pointer">Orders</a>
+        </li>
+    </ul>
+</header>
+
+<body style="background: #2b3035;width: 100%;height: 130vh;">
 
 
-<section class="container mt-5">
-    <h1 id="main">Traversing Methods in Jquery</h1>
-    <section class="row">
-        <div class="col-3">
-            <input id="txt" class="form-control" type="text" placeholder="input">
-            <button id="btn" class="btn btn-danger mt-2">Test</button>
+<!--customerForm-->
 
-        </div>
-        <div class="col-5">
-            <ol class="list-group"  id="task">
-            </ol>
-        </div>
-        <div class="col">
-            <div id="con" class="shadow">
-                <img  id="img" src="sss" class="w-100 h-100" alt="">
-            </div>
-        </div>
+<section id="customerForm" style="position:absolute; top:10vh;width: 100%; height:99vh;">
+    <section class="container-fluid justify-content-center">
+        <section class="row justify-content-center">
+            <section class="col-12 col-sm-12 col-md-10 col-lg-9 col-xl-8 mt-3" style="border: 1px solid #3dd5f3; border-radius: 12px;-webkit-box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);
+-moz-box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);
+box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
+
+
+                <div class="container-fluid">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2 mb-5 mt-5" type="search" placeholder="Customer ID" style="background: transparent;border: 1px solid #3dd5f3; color: #3dd5f3"aria-label="Search">
+                        <button class="btn btn-outline-success mt-5 mb-5"  type="submit">Search</button>
+                    </form>
+                </div>
+
+                <!--input bars-->
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="cId">Customer ID :</span>
+                    <input type="text" class="form-control" placeholder="Customer ID" id="cIdTxt" aria-label="Username" aria-describedby="cId">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" id="cNameTxt" class="form-control" placeholder="Name" aria-label="Recipient's username" aria-describedby="cName">
+                    <span class="input-group-text" id="cName">: Customer Name</span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="cAddress">Customer Address :</span>
+                    <input type="text"  id="cAddressTxt" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="cAddress">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" id="cSalaryText" class="form-control" placeholder="Salary" aria-label="Recipient's username" aria-describedby="cSalary">
+                    <span class="input-group-text" id="cSalary">: Customer Salary</span>
+                </div>
+
+
+                <!--btn groups-->
+
+
+                <div class="btn-group mt-5 mb-5" role="group" aria-label="Basic outlined example">
+                    <button id="cSavebtn" type="button" class="btn btn-outline-primary">Save</button>
+                    <button type="button" class="btn btn-outline-primary">Update</button>
+                    <button type="button" class="btn btn-outline-primary">Delete</button>
+                </div>
+
+
+                <!--table-->
+
+                <table class="table col-12 col-sm-12 col-md-10 col-lg-9 col-xl-8">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">Customer Address</th>
+                        <th scope="col">Salary</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblCustomer">
+
+                    </tbody>
+                </table>
+
+
+            </section>
+
+        </section>
+
     </section>
-    <section class="row mt-5">
-        <div class="col-12">
-            <ul id="ul" class="list-group">
-                <li>append()</li>
-                <li>prepend()</li>
-                <li>remove()</li>
-                <li>text()</li>
-                <li>val()</li>
-                <li>click()</li>
-                <li>attr()</li>
-                <li>css</li>
-            </ul>
-        </div>
+
+</section>
+
+<!--itemForm-->
+<section id="itemForm" style="width: 100%; height:99vh;position:absolute; top:10vh;" ; >
+
+    <section class="container-fluid justify-content-center">
+        <section class="row justify-content-center">
+            <section class="col-12 col-sm-12 col-md-10 col-lg-9 col-xl-8 mt-3" style="border: 1px solid #3dd5f3; border-radius: 12px;-webkit-box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);
+-moz-box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);
+box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
+
+
+                <div class="container-fluid">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2 mb-5 mt-5" type="search"  style="background: transparent;border: 1px solid #3dd5f3; color: white;" placeholder="Item Code" aria-label="Search">
+                        <button class="btn btn-outline-success mt-5 mb-5"   type="submit">Search</button>
+                    </form>
+                </div>
+
+                <!--input bars-->
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="Icode">Item Code :</span>
+                    <input class="form-control" placeholder="Item Code" aria-label="Username" aria-describedby="Icode">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Item Name" aria-label="Recipient's username" aria-describedby="IIName">
+                    <span class="input-group-text" id="IIName">: Item Name</span>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="Iprice">Item Price :</span>
+                    <input type="text" class="form-control" placeholder="Price" aria-label="Username" aria-describedby="Iprice">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Quantity" aria-label="Recipient's username" aria-describedby="Iqty">
+                    <span class="input-group-text" id="Iqty">: Item Quantity</span>
+                </div>
+
+
+                <!--btn groups-->
+
+
+                <div class="btn-group mt-5 mb-5" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-primary">Save</button>
+                    <button type="button" class="btn btn-outline-primary">Update</button>
+                    <button type="button" class="btn btn-outline-primary">Delete</button>
+                </div>
+
+
+                <!--table-->
+
+                <table class="table col-12 col-sm-12 col-md-10 col-lg-9 col-xl-8">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">Customer Address</th>
+                        <th scope="col">Salary</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </section>
+
+        </section>
+
+    </section>
+
+</section>
+
+
+<!--orderForm-->
+<section id="orderForm" style="width: 100%; height:120vh;position:absolute; top:10vh;";>
+
+    <section class="container-fluid mt-5">
+        <section class="row justify-content-center" style="border: 1px solid #3dd5f3; border-radius: 12px;-webkit-box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);
+-moz-box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);
+box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
+            <section class="col-12 col-sm-12 col-md-6 col-lg-2 col-xl-4 col-xxl-3">
+                <select class="form-select mt-4" aria-label="Default select example">
+                    <option selected>Customer ID</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                <select class="form-select mt-4" aria-label="Default select example">
+                    <option selected>Item Code</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+
+                <form>
+                    <div class="mb-3 mt-4">
+                        <label for="exampleInputPassword1" style="color: #3dd5f3" class="form-label">Qty.on Hand</label>
+                        <input  class="form-control" id="exampleInputPassword1">
+                    </div>
+                </form>
+
+            </section>
+
+
+
+            <section class="col-12 col-sm-12 col-md-6 col-lg-5 col-xl-4 col-xxl-3">
+                <form>
+                    <div class="mb-3">
+                        <label for="COName" style="color: #3dd5f3" class="form-label">Customer Name</label>
+                        <input  class="form-control" id="COName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="IName" style="color: #3dd5f3" class="form-label">Item Name</label>
+                        <input  class="form-control" id="IName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Price" style="color: #3dd5f3" class="form-label">Price</label>
+                        <input  class="form-control" id="Price">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Qty" style="color: #3dd5f3" class="form-label">Qty</label>
+                        <input  class="form-control" id="Qty">
+                    </div>
+                </form>
+            </section>
+
+
+
+            <section class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-4 col-xxl-3">
+                <form>
+                    <div class="mb-3">
+                        <label for="OrderID" style="color: #3dd5f3" class="form-label">Order ID</label>
+                        <input  class="form-control" id="OrderID">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Date" style="color: #3dd5f3" class="form-label">Date</label>
+                        <input  class="form-control" id="Date">
+                    </div>
+                </form>
+
+                <button type="button" class="btn btn-outline-primary">ADD</button>
+
+
+            </section>
+
+
+
+        </section>
+
+    </section>
+
+    <section class="container-fluid mt-5">
+        <section class="row justify-content-center">
+            <section class="col-12 col-sm-12 col-md-11 col-lg-10 col-xl-9" >
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Total</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td>Otto</td>
+                        <td><button type="button" class="btn btn-outline-primary">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Otto</td>
+                        <td><button type="button" class="btn btn-outline-primary">Delete</button></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        <td>Otto</td>
+                        <td>      <button type="button" class="btn btn-outline-primary">Delete</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </section>
+
     </section>
 </section>
 
-<script src="asets/js/bootstrap.js"></script>
 
-<script src="asets/js/jquery-3.7.1.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.js"></script>
+<script src="assets/bootstrap/js/jquery-3.7.1.min.js"></script>
+
+
 <script>
-    //how to select with jQuery.?
-    //select h1 from the id and change color and font-size
 
-    // 01st method
-    // $('#main').css('color','red');
-    // $('#main').css('font-size','100px');
+    var Customers =[];
 
-    //02nd method
-    $('#main').css({
-        "color": 'red',
-        "font-size":'40px'
+    document.querySelector("#customerForm").style.display='inline';
+    document.querySelector("#itemForm").style.display='none';
+    document.querySelector("#orderForm").style.display='none';
+
+
+    document.querySelector("#customerNav").addEventListener("click",function () {
+        document.querySelector("#customerForm").style.display='inline';
+        document.querySelector("#itemForm").style.display='none';
+        document.querySelector("#orderForm").style.display='none';
     });
 
-
-    //so how to get and change text of an element.?
-    $('h1').text(); //will return the text content of the h1
-
-    //so then how to change?
-    $('h1').text("jQuery is Awesome.! :-D"); // you can change text like this
-
-
-
-    //Then how to get input filed typed values from a text filed.?
-    $('input').val(); // val() method will input field typed value
-
-    //if you want to change the input value
-    $('input').val('1000');
-
-
-    //so then how to remove elements.?
-    // $('li').remove();
-
-
-    //how to add elements using jQuery
-    //you can simply add html element as a string
-    //no need of creating dom element
-
-
-
-    //how to access attributes.?
-    $('img').attr('src');
-    $('img').attr('src','');
-
-
-    let url;
-
-    $(`#btn`).click(function (){
-
-        url = $(`input`).val();
-
-        $(`#task`).append(`<li>${url}</li>`);
-
-        $(`img`).attr(`src`,url);
-
+    document.querySelector("#itemNav").addEventListener("click",function () {
+        document.querySelector("#customerForm").style.display='none';
+        document.querySelector("#itemForm").style.display='inline';
+        document.querySelector("#orderForm").style.display='none';
     });
 
+    document.querySelector("#orderNav").addEventListener("click",function () {
+        document.querySelector("#customerForm").style.display="none";
+        document.querySelector("#itemForm").style.display="none";
+        document.querySelector("#orderForm").style.display="inline";
+    });
 
+    document.getElementById("cSavebtn").addEventListener("click",function (){
+
+        var customer={
+            id :document.getElementById("cIdTxt").value,
+            name :document.getElementById("cNameTxt").value,
+            address:document.getElementById("cAddressTxt").value,
+            salary:document.getElementById("cSalaryText").value
+        }
+
+        Customers.push(customer);
+
+        for (let i = 0; i < Customers.length; i++) {
+            $("#tblCustomer").append("<tr id='tr'> </tr>")
+            $("#tr").append("<td>"+Customers[i].name+"</td>","<td>"+Customers[i].id+"</td>","<td>"+Customers[i].address+"</td>","<td>"+Customers[i].salary+"</td>")
+
+        }
+
+    });
 
 </script>
+
 </body>
 </html>
