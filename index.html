@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Customer</title>
-    <script src="asets/js/jquery-3.7.1.min.js"></script>
     <link rel="stylesheet" href="asets/css/bootstrap.css">
-    <script src="asets/js/bootstrap.js"></script>
 </head>
 <header>
 
@@ -318,56 +316,85 @@ box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
     </section>
 </section>
 
+<script src="asets/js/bootstrap.js"></script>
 
-<script src="assets/bootstrap/js/bootstrap.js"></script>
-<script src="assets/bootstrap/js/jquery-3.7.1.min.js"></script>
-
+<script src="asets/js/jquery-3.7.1.min.js"></script>
 
 <script>
 
     var Customers =[];
 
-    document.querySelector("#customerForm").style.display='inline';
-    document.querySelector("#itemForm").style.display='none';
-    document.querySelector("#orderForm").style.display='none';
+    var customerFormVar =document.querySelector("#customerForm");
+    var itemFormVar =document.querySelector("#itemForm");
+    var orderrFormVar =document.querySelector("#orderForm");
+
+    customerFormVar.style.display='inline';
+    itemFormVar.style.display='none';
+    orderrFormVar.style.display='none';
 
 
-    document.querySelector("#customerNav").addEventListener("click",function () {
-        document.querySelector("#customerForm").style.display='inline';
-        document.querySelector("#itemForm").style.display='none';
-        document.querySelector("#orderForm").style.display='none';
+
+    $("#customerNav").click(function (){
+        customerFormVar.style.display='inline';
+        itemFormVar.style.display='none';
+        orderrFormVar.style.display='none';
     });
 
-    document.querySelector("#itemNav").addEventListener("click",function () {
-        document.querySelector("#customerForm").style.display='none';
-        document.querySelector("#itemForm").style.display='inline';
-        document.querySelector("#orderForm").style.display='none';
+
+    $("#itemNav").click(function (){
+        customerFormVar.style.display='none';
+        itemFormVar.style.display='inline';
+        orderrFormVar.style.display='none';
     });
 
-    document.querySelector("#orderNav").addEventListener("click",function () {
-        document.querySelector("#customerForm").style.display="none";
-        document.querySelector("#itemForm").style.display="none";
-        document.querySelector("#orderForm").style.display="inline";
+
+    $("#orderNav").click(function (){
+        customerFormVar.style.display="none";
+        itemFormVar.style.display="none";
+        orderrFormVar.style.display="inline";
     });
 
-    document.getElementById("cSavebtn").addEventListener("click",function (){
+
+    $("#cSavebtn").click(function () {
+        $("#tblCustomer").empty();
 
         var customer={
-            id :document.getElementById("cIdTxt").value,
-            name :document.getElementById("cNameTxt").value,
-            address:document.getElementById("cAddressTxt").value,
-            salary:document.getElementById("cSalaryText").value
+
+            id:$("#cIdTxt").val(),
+            name:$("#cNameTxt").val(),
+            address:$("#cAddressTxt").val(),
+            salary:$("#cSalaryText").val()
+
+
         }
 
         Customers.push(customer);
 
         for (let i = 0; i < Customers.length; i++) {
-            $("#tblCustomer").append("<tr id='tr'> </tr>")
-            $("#tr").append("<td>"+Customers[i].name+"</td>","<td>"+Customers[i].id+"</td>","<td>"+Customers[i].address+"</td>","<td>"+Customers[i].salary+"</td>")
-
+            $("#tblCustomer").append("<tr><td>"+Customers[i].name+"</td><td>"+Customers[i].id+"</td><td>"+Customers[i].address+"</td><td>"+Customers[i].salary+"</td></tr>");
         }
 
+        $("#tblCustomer tr").click(function() {
+            var row = $(this);
+            var name = row.find("td:eq(0)").text();
+            var id = row.find("td:eq(1)").text();
+            var address = row.find("td:eq(2)").text();
+            var salary = row.find("td:eq(3)").text();
+
+            $("#cNameTxt").val(name);
+            $("#cIdTxt").val(id);
+            $("#cAddressTxt").val(address);
+            $("#cSalaryText").val(salary);
+        });
+
     });
+
+
+
+
+
+
+
 
 </script>
 
