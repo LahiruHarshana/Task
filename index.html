@@ -325,6 +325,7 @@ box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
 
     var Customers =[];
 
+
     var customerFormVar =document.querySelector("#customerForm");
     var itemFormVar =document.querySelector("#itemForm");
     var orderrFormVar =document.querySelector("#orderForm");
@@ -359,6 +360,7 @@ box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
     $("#cSavebtn").click(function () {
         $("#tblCustomer").empty();
 
+
         var customer={
 
             id:$("#cIdTxt").val(),
@@ -389,6 +391,12 @@ box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
         });
 
     });
+
+    $("#tblCustomer").on("dblclick", "tr", function() {
+        var row = $(this);
+        row.remove();
+    });
+
 
     $("#clearBtn").click(function (){
         $("#cNameTxt").val("");
