@@ -395,6 +395,9 @@ box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
     $("#tblCustomer").on("dblclick", "tr", function() {
         var row = $(this);
         row.remove();
+        for (let i = 0; i < Customers.length; i++) {
+            Customers.pop();
+        }
     });
 
 
