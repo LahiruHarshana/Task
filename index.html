@@ -69,6 +69,7 @@ box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
                     <button id="cSavebtn" type="button" class="btn btn-outline-primary">Save</button>
                     <button type="button" class="btn btn-outline-primary">Update</button>
                     <button type="button" class="btn btn-outline-primary">Delete</button>
+                    <button id="clearBtn" type="button" class="btn btn-outline-primary">Clear All</button>
                 </div>
 
 
@@ -387,6 +388,13 @@ box-shadow: inset 10px 13px 110px -39px rgba(61,213,243,1);">
             $("#cSalaryText").val(salary);
         });
 
+    });
+
+    $("#clearBtn").click(function (){
+        $("#cNameTxt").val("");
+        $("#cIdTxt").val("");
+        $("#cAddressTxt").val("");
+        $("#cSalaryText").val("");
     });
 
 
