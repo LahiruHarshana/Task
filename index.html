@@ -2,48 +2,111 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Task Two</title>
+    <title>DOM Manipulation with JQuery</title>
+    <style>
+        #con{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
     <link rel="stylesheet" href="asets/css/bootstrap.css">
 </head>
 <body>
 
-<section class="container">
-    <h1>Task Generator.!</h1>
-    <div class="row">
-        <div class="col-4">
-            <input id="txt" class="form-control" type="text" placeholder="Input a Task">
-            <button id="btn" class="btn btn-danger mt-2">Add Task</button>
+
+<section class="container mt-5">
+    <h1 id="main">Traversing Methods in Jquery</h1>
+    <section class="row">
+        <div class="col-3">
+            <input id="txt" class="form-control" type="text" placeholder="input">
+            <button id="btn" class="btn btn-danger mt-2">Test</button>
+
         </div>
-        <div class="offset-1 col-3 shadow overflow-x-hidden" style="height: 70vh">
-            <ol id="list" class="list-group p-2">
-                <li class="list-group-item">Task One</li>
+        <div class="col-5">
+            <ol class="list-group"  id="task">
             </ol>
         </div>
-    </div>
+        <div class="col">
+            <div id="con" class="shadow">
+                <img  id="img" src="sss" class="w-100 h-100" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="row mt-5">
+        <div class="col-12">
+            <ul id="ul" class="list-group">
+                <li>append()</li>
+                <li>prepend()</li>
+                <li>remove()</li>
+                <li>text()</li>
+                <li>val()</li>
+                <li>click()</li>
+                <li>attr()</li>
+                <li>css</li>
+            </ul>
+        </div>
+    </section>
 </section>
 
 
-
+<script src="asets/js/jquery-3.7.1.min.js"></script>
 <script>
-    //Bind an event for Change Text Btn
-    //Get Input Text Value
-    //Create a list element
-    //Add it to the Ordered List
+    //how to select with jQuery.?
+    //select h1 from the id and change color and font-size
 
-    document.querySelector("button").addEventListener("click",function () {
-        var value = document.querySelector("#txt").value;
-        const listItem = document.createElement("li");
-        listItem.className = "list-group-item";
-        listItem.textContent = value;
-        document.querySelector("#list").appendChild(listItem);
-        document.querySelector("#txt").value = "";
+    // 01st method
+    // $('#main').css('color','red');
+    // $('#main').css('font-size','100px');
 
-
+    //02nd method
+    $('#main').css({
+        "color": 'red',
+        "font-size":'40px'
+    });
 
 
+    //so how to get and change text of an element.?
+    $('h1').text(); //will return the text content of the h1
+
+    //so then how to change?
+    $('h1').text("jQuery is Awesome.! :-D"); // you can change text like this
 
 
-    })
+
+    //Then how to get input filed typed values from a text filed.?
+    $('input').val(); // val() method will input field typed value
+
+    //if you want to change the input value
+    $('input').val('1000');
+
+
+    //so then how to remove elements.?
+    // $('li').remove();
+
+
+    //how to add elements using jQuery
+    //you can simply add html element as a string
+    //no need of creating dom element
+
+
+
+    //how to access attributes.?
+    $('img').attr('src');
+    $('img').attr('src','');
+
+
+    let url;
+
+    $(`#btn`).click(function (){
+
+        url = $(`input`).val();
+
+        $(`#task`).append(`<li>${url}</li>`);
+
+        $(`img`).attr(`src`,url);
+
+    });
+
 
 
 </script>
